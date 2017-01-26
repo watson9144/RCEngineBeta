@@ -8,5 +8,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\WindowsMain.cpp" />
+    <ClCompile Include="..\Source\Core.cpp" />
+    <ClCompile Include="..\Source\RenderWindow.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Source\Core.h" />
+    <ClInclude Include="..\Source\RenderWindow.h" />
   </ItemGroup>
 </Project>

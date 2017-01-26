@@ -1,6 +1,9 @@
-#include <iostream>
+﻿#include "Core.h"
+#include "RenderWindow.h"
+
 void main()
 {
-	//another push test
+	g_SystemCore;
+
 	return;
 }
