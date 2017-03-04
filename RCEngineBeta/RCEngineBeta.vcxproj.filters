@@ -10,9 +10,12 @@
     <ClCompile Include="..\Source\WindowsMain.cpp" />
     <ClCompile Include="..\Source\Core.cpp" />
     <ClCompile Include="..\Source\RenderWindow.cpp" />
+    <ClCompile Include="..\Source\RenderSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Core.h" />
     <ClInclude Include="..\Source\RenderWindow.h" />
+    <ClInclude Include="..\Source\RenderSystem.h" />
+    <ClInclude Include="..\Source\SystemBase.h" />
   </ItemGroup>
 </Project>

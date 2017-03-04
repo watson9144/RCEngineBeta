@@ -1,9 +1,20 @@
 ﻿#include "Core.h"
 #include "RenderWindow.h"
+#include "RenderSystem.h"
 
-void main()
+int main(int argc, char *argv[])
 {
-	g_SystemCore;
+	std::unique_ptr<CRenderSystem> render_system(new CRenderSystem());
+	g_SystemCore->AddSystem(std::move(render_system));
 
-	return;
+	g_SystemCore->InitializeSystems();
+
+	while (1)
+	{
+		g_SystemCore->UpdateSystems();
+	}
+
+	g_SystemCore->TerminateSystems();
+
+	return 0;
 }
