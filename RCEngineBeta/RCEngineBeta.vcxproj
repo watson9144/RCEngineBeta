@@ -69,7 +69,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>..\ThirdParty\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\ThirdParty\SDL2-2.0.5\include;..\ThirdParty\glm;$(IncludePath)</IncludePath>
     <LibraryPath>..\ThirdParty\SDL2-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -123,6 +123,7 @@
     <ClCompile Include="..\Source\WindowsMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Source\Common.h" />
     <ClInclude Include="..\Source\Core.h" />
     <ClInclude Include="..\Source\RenderSystem.h" />
     <ClInclude Include="..\Source\RenderWindow.h" />
