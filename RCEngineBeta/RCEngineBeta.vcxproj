@@ -118,6 +118,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Core.cpp" />
+    <ClCompile Include="..\Source\Misc.cpp" />
     <ClCompile Include="..\Source\RenderSystem.cpp" />
     <ClCompile Include="..\Source\RenderWindow.cpp" />
     <ClCompile Include="..\Source\WindowsMain.cpp" />
@@ -125,6 +126,7 @@
   <ItemGroup>
     <ClInclude Include="..\Source\Common.h" />
     <ClInclude Include="..\Source\Core.h" />
+    <ClInclude Include="..\Source\Misc.h" />
     <ClInclude Include="..\Source\RenderSystem.h" />
     <ClInclude Include="..\Source\RenderWindow.h" />
     <ClInclude Include="..\Source\SystemBase.h" />

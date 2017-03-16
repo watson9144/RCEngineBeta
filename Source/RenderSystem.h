@@ -1,5 +1,8 @@
 ﻿#pragma once
+#include <GL\glew.h>
+#include <SDL_opengl.h>
 #include <memory>
+#include <string>
 #include "SystemBase.h"
 //渲染系统,包含窗口创建管理等等
 #include "RenderWindow.h"
@@ -16,4 +19,6 @@ public:
 private:
 	//先只支持一个窗口
 	std::unique_ptr<CRenderWindow> m_RenderWindow;
+	//载入shader
+	int LoadShader(const std::string& shader_file_path, GLenum shader_type);
 };

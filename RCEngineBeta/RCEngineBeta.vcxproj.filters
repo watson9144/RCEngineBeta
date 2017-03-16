@@ -11,6 +11,7 @@
     <ClCompile Include="..\Source\Core.cpp" />
     <ClCompile Include="..\Source\RenderWindow.cpp" />
     <ClCompile Include="..\Source\RenderSystem.cpp" />
+    <ClCompile Include="..\Source\Misc.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Core.h" />
@@ -18,5 +19,6 @@
     <ClInclude Include="..\Source\RenderSystem.h" />
     <ClInclude Include="..\Source\SystemBase.h" />
     <ClInclude Include="..\Source\Common.h" />
+    <ClInclude Include="..\Source\Misc.h" />
   </ItemGroup>
 </Project>
