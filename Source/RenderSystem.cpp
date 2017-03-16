@@ -1,29 +1,30 @@
 ﻿#include "RenderSystem.h"
+#include <GL\glew.h>
 #include <SDL_opengl.h>
 
 int CRenderSystem::Initialize()
 {
 	m_RenderWindow.reset(new CRenderWindow(640, 480, "RCEngine"));
-
-	//设置用于清屏的颜色
-	glClearColor(0, 0, 0, 0);
-
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	glOrtho(0, m_RenderWindow->GetWidth(), m_RenderWindow->GetHeight(), 0, -1, 1);
-
-	//如果有错误的话
-	if (glGetError() != GL_NO_ERROR)
-	{
+	
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+	SDL_GLContext gl_context = SDL_GL_CreateContext(m_RenderWindow->GetWindow());
+	if (!gl_context)
 		return SYSTEM_ACTIVITY_FAILED;
-	}
+	
+	glewExperimental = GL_TRUE;
 
+	glewInit();
 
 	return SYSTEM_ACTIVITY_SUCCEED;
 }
 
 int CRenderSystem::Update(double time_step)
 {
+	glClearColor(1.0, 0.0, 0.5, 1.0);
+
+	// Clear back buffer
+	glClear(GL_COLOR_BUFFER_BIT);
+
 	//开始绘制四边形
 	glBegin(GL_QUADS);
 
@@ -40,6 +41,9 @@ int CRenderSystem::Update(double time_step)
 
 	glLoadIdentity();
 
+
+	// Swap back and front buffer
+	SDL_GL_SwapWindow(m_RenderWindow->GetWindow());
 	return SYSTEM_ACTIVITY_SUCCEED;
 }
 

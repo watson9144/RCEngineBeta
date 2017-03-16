@@ -69,8 +69,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>..\ThirdParty\SDL2-2.0.5\include;..\ThirdParty\glm;$(IncludePath)</IncludePath>
-    <LibraryPath>..\ThirdParty\SDL2-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\ThirdParty\SDL2-2.0.5\include;..\ThirdParty\glm;..\ThirdParty\glew-1.13.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\ThirdParty\SDL2-2.0.5\lib\x64;..\ThirdParty\glew-1.13.0\lib\Release\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -87,7 +87,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;SDL2.lib;SDL2main.lib;SDL2test.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;SDL2.lib;SDL2main.lib;SDL2test.lib;glew32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
