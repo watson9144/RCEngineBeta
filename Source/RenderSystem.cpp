@@ -3,9 +3,6 @@
 #include "Misc.h"
 #include "RenderSystem.h"
 
-GLuint vertex_array_id;
-GLuint vertex_buffer;
-
 const uint32_t points = 12;
 const uint32_t floatsPerPoint = 3;
 const uint32_t floatsPerColor = 4;
@@ -63,21 +60,20 @@ int CRenderSystem::Initialize()
 	if (glewInit() != GLEW_OK)
 		return SYSTEM_ACTIVITY_FAILED;
 
-	glGenBuffers(2, vbo);
-	glGenVertexArrays(1, vao);
-	glBindVertexArray(vao[0]);
+	glGenBuffers(1, &m_VertexBuffer);
+	glGenBuffers(1, &m_ColorBuffer);
+	glGenVertexArrays(1, &m_VertexArrayObject);
+	glBindVertexArray(m_VertexArrayObject);
 
-	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-	glBufferData(GL_ARRAY_BUFFER, (points*floatsPerColor) * sizeof(GLfloat), colors, GL_STATIC_DRAW);
-	glVertexAttribPointer(colorAttributeIndex, 4, GL_FLOAT, GL_FALSE, 0, 0);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
+
+	glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
 	glBufferData(GL_ARRAY_BUFFER, (points*floatsPerPoint) * sizeof(GLfloat), diamond, GL_STATIC_DRAW);
-
-	glVertexAttribPointer(positionAttributeIndex, 3, GL_FLOAT, GL_FALSE, 0, 0);
-
-	glEnableVertexAttribArray(positionAttributeIndex);
-	glEnableVertexAttribArray(colorAttributeIndex);
-
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+	glBindBuffer(GL_ARRAY_BUFFER, m_ColorBuffer);
+	glBufferData(GL_ARRAY_BUFFER, (points*floatsPerColor) * sizeof(GLfloat), colors, GL_STATIC_DRAW);
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(1);
 
 	GLuint shader_program = glCreateProgram();
 

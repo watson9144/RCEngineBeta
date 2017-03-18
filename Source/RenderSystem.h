@@ -22,4 +22,12 @@ private:
 	//载入shader
 	GLuint LoadShader(const std::string& shader_file_path, GLenum shader_type);
 	GLint CheckShaderProgram(GLuint program_id);
+
+private:
+	//OPENGL初始化常量
+	GLuint m_VertexBuffer;		//顶点buffer
+	GLuint m_ColorBuffer;		//颜色buffer
+	//TODO: buffers[2];确定顶点/颜色/法线等的位置	
+	GLuint m_VertexArrayObject;
+	
 };
