@@ -20,5 +20,6 @@ private:
 	//先只支持一个窗口
 	std::unique_ptr<CRenderWindow> m_RenderWindow;
 	//载入shader
-	int LoadShader(const std::string& shader_file_path, GLenum shader_type);
+	GLuint LoadShader(const std::string& shader_file_path, GLenum shader_type);
+	GLint CheckShaderProgram(GLuint program_id);
 };
