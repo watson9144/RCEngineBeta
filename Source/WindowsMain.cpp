@@ -5,16 +5,10 @@
 int main(int argc, char *argv[])
 {
 	std::unique_ptr<CRenderSystem> render_system(new CRenderSystem());
-	g_SystemCore->AddSystem(std::move(render_system));
 
-	g_SystemCore->InitializeSystems();
-
-	while (1)
-	{
-		g_SystemCore->UpdateSystems();
-	}
-
-	g_SystemCore->TerminateSystems();
+	g_SystemCore->AddRenderWindow(640, 480, "Game window");
+	g_SystemCore->InitialRenderWindows();
+	g_SystemCore->UpdateRenderWindows();
 
 	return 0;
 }

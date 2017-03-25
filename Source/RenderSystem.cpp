@@ -98,6 +98,8 @@ int CRenderSystem::Initialize()
 
 int CRenderSystem::Update(double time_step)
 {
+	auto window = m_RenderWindow->GetWindow();
+	
 	glClearColor(1.0, 0.0, 0.5, 1.0);
 	// Clear back buffer
 	glClear(GL_COLOR_BUFFER_BIT);
