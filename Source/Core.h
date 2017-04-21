@@ -1,20 +1,21 @@
 ﻿#pragma once
 #include <memory>
 #include <vector>
-#include <string>
 //系统核心
-#include "RenderWindow.h"
+//class CSystemBase;
+#include "SystemBase.h"
 
 class CSystemCore
 {
 public:
-	void AddRenderWindow(unsigned int width, unsigned int height, const std::string& window_title);
-	void InitialRenderWindows();
-	void UpdateRenderWindows();
-	void TerminateRenderWindows();
+	void AddSystem(std::unique_ptr<CSystemBase> a_system);
+
+	void InitializeSystems();
+	void UpdateSystems();
+	void TerminateSystems();
 
 private:
-	std::vector<std::unique_ptr<CRenderWindow>> m_RenderWindows;
+	std::vector<std::unique_ptr<CSystemBase>> m_Systems;
 };
 
 extern std::unique_ptr<CSystemCore> g_SystemCore;
