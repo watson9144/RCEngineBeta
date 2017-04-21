@@ -2,41 +2,27 @@
 
 std::unique_ptr<CSystemCore> g_SystemCore(new CSystemCore);
 
-void CSystemCore::AddSystem(std::unique_ptr<CSystemBase> a_system)
+void CSystemCore::AddRenderWindow(unsigned int width, unsigned int height, const std::string& window_title)
 {
-	m_Systems.push_back(std::move(a_system));
+	std::unique_ptr<CRenderWindow> render_window(new CRenderWindow(width, height, window_title));
 }
 
-void CSystemCore::InitializeSystems()
+void CSystemCore::InitialRenderWindows()
 {
-	for (auto& sys : m_Systems)
+	//做些什么？
+	for (int window_idx = 0; window_idx < m_RenderWindows.size(); ++window_idx)
 	{
-		if (sys->Initialize() != SYSTEM_ACTIVITY_SUCCEED)
-		{
-			printf("系统初始化出错\n");
-		}
+		m_RenderWindows[window_idx]->InitializeSystems();
 	}
 }
 
-void CSystemCore::UpdateSystems()
+void CSystemCore::UpdateRenderWindows()
 {
-	//TODO: 时间
-	for (auto& sys : m_Systems)
+	while (m_RenderWindows.size() > 0)
 	{
-		if (sys->Update(1.0) != SYSTEM_ACTIVITY_SUCCEED)
+		for (int window_idx = 0; window_idx < m_RenderWindows.size(); ++window_idx)
 		{
-			printf("系统更新出错\n");
-		}
-	}
-}
-
-void CSystemCore::TerminateSystems()
-{
-	for (auto& sys : m_Systems)
-	{
-		if (sys->Terminate() != SYSTEM_ACTIVITY_SUCCEED)
-		{
-			printf("系统终止出错\n");
+			m_RenderWindows[window_idx]->UpdateSystems();
 		}
 	}
 }
