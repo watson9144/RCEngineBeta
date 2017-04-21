@@ -7,6 +7,8 @@ const uint32_t points = 12;
 const uint32_t floatsPerPoint = 3;
 const uint32_t floatsPerColor = 4;
 
+bool g_EngineRunning = true;
+
 const GLfloat diamond[points][floatsPerPoint] = {
 	{ 0.2,  0.2,  0.5 }, // Top right
 	{ -0.2,  0.2,  0.5 }, // Top left
@@ -98,11 +100,12 @@ int CRenderSystem::Initialize()
 
 int CRenderSystem::Update(double time_step)
 {
+	UpdateWindowsMessages();
+
 	glClearColor(1.0, 0.0, 0.5, 1.0);
 	// Clear back buffer
 	glClear(GL_COLOR_BUFFER_BIT);
-
-
+	
 	glDrawArrays(GL_TRIANGLES, 0, points);
 
 	// Swap back and front buffer
@@ -152,4 +155,23 @@ GLint CRenderSystem::CheckShaderProgram(GLuint program_id)
 	fprintf(stdout, "%s\n", &program_error_msg[0]);
 
 	return result;
+}
+
+void CRenderSystem::UpdateWindowsMessages()
+{
+	SDL_Event windows_event;
+	if (SDL_PollEvent(&windows_event))
+	{
+		if (windows_event.type == SDL_QUIT)
+		{
+			printf("quit");
+			g_EngineRunning = false;
+		}
+
+		if (windows_event.type == SDL_WINDOWEVENT_CLOSE)
+		{
+			printf("window closed");
+			g_EngineRunning = false;
+		}
+	}
 }

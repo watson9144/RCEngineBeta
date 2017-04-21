@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 
 	g_SystemCore->InitializeSystems();
 
-	while (1)
+	while (g_EngineRunning)
 	{
 		g_SystemCore->UpdateSystems();
 	}

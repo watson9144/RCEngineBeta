@@ -17,13 +17,15 @@ public:
 	int Terminate() override;
 
 private:
-	//先只支持一个窗口
-	std::unique_ptr<CRenderWindow> m_RenderWindow;
 	//载入shader
 	GLuint LoadShader(const std::string& shader_file_path, GLenum shader_type);
 	GLint CheckShaderProgram(GLuint program_id);
 
+	//update windows message
+	void UpdateWindowsMessages();
 private:
+	//先只支持一个窗口
+	std::unique_ptr<CRenderWindow> m_RenderWindow;
 	//OPENGL初始化常量
 	GLuint m_VertexBuffer;		//顶点buffer
 	GLuint m_ColorBuffer;		//颜色buffer
@@ -31,3 +33,5 @@ private:
 	GLuint m_VertexArrayObject;
 	
 };
+
+extern bool g_EngineRunning;
